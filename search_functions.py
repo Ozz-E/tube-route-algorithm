@@ -41,6 +41,15 @@ for index, row in df.iterrows():
 
 
 def construct_path_from_root(node, root):
+    """ This function constructs a path from the root node to a given node.
+
+    Args:
+        node (_type_): current station name
+        root (_type_): origin station name 
+
+    Returns:
+        path_from_root: 
+    """    
     path_from_root = [node['label']]
     while node['parent']:
         node = node['parent']
@@ -49,6 +58,15 @@ def construct_path_from_root(node, root):
 
 
 def get_path_cost(solution_path, station_dict):
+    """ This function calculates the total cost of a path from the root node to a given node.
+
+    Args:
+        solution_path (_type_): path from the root node to a given node
+        station_dict (_type_): dictionary of station names and their costs
+
+    Returns:
+        total cost: cost of the path from the root node to a given node
+    """    
     total_cost = 0
     for i in range(len(solution_path) - 1):
 
@@ -64,6 +82,17 @@ def get_path_cost(solution_path, station_dict):
 
 
 def dfs(station_dict, initial, goal, reverse=False):
+    """ This function performs a depth-first search on a given graph.
+
+    Args:
+        station_dict (_type_): dictionary of station names and their costs
+        initial (_type_): name of the starting station
+        goal (_type_): name of the destination station
+        reverse (bool, optional): direction of the search. Defaults to False.
+
+    Returns:
+        number_of_explored_nodes: number of nodes explored during the search
+    """    
     frontier = [{'label': initial, 'parent': None}]
     explored = {initial}
     number_of_explored_nodes = 0
@@ -86,6 +115,17 @@ def dfs(station_dict, initial, goal, reverse=False):
 
 
 def bfs(station_dict, initial, goal, reverse=False):
+    """ This function performs a breadth-first search on a given graph.
+
+    Args:
+        station_dict (_type_): dictionary of station names and their costs
+        initial (_type_): name of the starting station
+        goal (_type_): name of the destination station
+        reverse (bool, optional): direction of the search. Defaults to False.
+
+    Returns:
+        number_of_explored_nodes: number of nodes explored during the search
+    """    
     number_of_explored_nodes = 1
     frontier = [{'label': initial, 'parent': None}]
     # FIFO queue implementation with a list is slow. For bigger problems, better to use deque.
@@ -114,6 +154,17 @@ def bfs(station_dict, initial, goal, reverse=False):
 
 
 def ucs(station_dict, initial, goal, zone_dict, reverse=False):
+    """ This function performs a unit cost search on a given graph.
+
+    Args:
+        station_dict (_type_): dictionary of station names and their costs
+        initial (_type_): name of the starting station
+        goal (_type_): name of the destination station
+        reverse (bool, optional): direction of the search. Defaults to False.
+
+    Returns:
+        number_of_explored_nodes: number of nodes explored during the search
+    """    
 
     init_cost = 0
     number_of_explored_nodes = 0

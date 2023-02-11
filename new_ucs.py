@@ -38,6 +38,19 @@ for index, row in df.iterrows():
         zone_dict[end_station].add(zone1)
 
 def nucs(station_dict, initial, goal, zone_dict, line_change_time, reverse=False):
+    """_summary_
+
+    Args:
+        station_dict (_type_): _description_
+        initial (_type_): _description_
+        goal (_type_): _description_
+        zone_dict (_type_): _description_
+        line_change_time (_type_): _description_
+        reverse (bool, optional): _description_. Defaults to False.
+
+    Returns:
+        _type_: _description_
+    """    
     init_cost = 0
     number_of_explored_nodes = 0
 

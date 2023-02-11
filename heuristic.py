@@ -6,6 +6,8 @@ from queue import PriorityQueue
 from collections import defaultdict
 import csv
 
+
+
 # Read data from csv file and convert it to dictionary, add attributes to the dictionary
 df = pd.read_csv('tubedata.csv', header=None)
 # no header -> can just assign new column names
@@ -37,6 +39,16 @@ for index, row in df.iterrows():
         zone_dict[end_station].add(zone1)
 
 def heuristic(zone_dict, initial, goal):
+    """ This function is used to calculate the heuristic value of the path.
+
+    Args:
+        zone_dict (_type_): _description_
+        initial (_type_): _description_
+        goal (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     cost = 5
     start_zones = zone_dict[initial]
     goal_zones = zone_dict[goal]
@@ -46,6 +58,19 @@ def heuristic(zone_dict, initial, goal):
     return cost
 
 def ucs(station_dict, initial, goal, zone_dict, algorithm = "BFS", reverse=False):
+    """ This function implements the UCS algorithm.
+
+    Args:
+        station_dict (_type_): _description_
+        initial (_type_): _description_
+        goal (_type_): _description_
+        zone_dict (_type_): _description_
+        algorithm (_type_, optional): _description_. Defaults to "BFS".
+        reverse (_type_, optional): _description_. Defaults to False.
+
+    Returns:
+        _type_: _description_
+    """
 
     init_cost = 0
     number_of_explored_nodes = 0
