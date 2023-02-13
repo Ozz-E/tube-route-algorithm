@@ -6,8 +6,10 @@ from queue import PriorityQueue
 from collections import defaultdict
 import csv
 
+
 # Read data from csv file and convert it to dictionary, add attributes to the dictionary
 df = pd.read_csv('tubedata.csv', header=None)
+
 # no header -> can just assign new column names
 df.head()
 
